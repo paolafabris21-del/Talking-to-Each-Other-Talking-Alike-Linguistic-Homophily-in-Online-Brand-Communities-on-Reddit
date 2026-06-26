@@ -69,7 +69,7 @@ The figure scripts (`09`, `10`) save each figure as PDF in the `figures/` direct
 
 The first run of `07_sentiment_analysis.py` will automatically download the pre-trained model `cardiffnlp/twitter-roberta-base-sentiment` (~500 MB) from Hugging Face. An internet connection is required. Subsequent runs use the locally cached model.
 
-If a GPU is available, change `device=-1` to `device=0` in the pipeline definition inside `07_sentiment_analysis.py` to speed up inference.
+The script automatically selects the fastest available backend (Apple MPS or CUDA if present, otherwise CPU); no change is needed. Comments are streamed and classified in bounded chunks with progress output, and results are saved per subreddit, so an interrupted run resumes from where it stopped.
 
 ---
 
