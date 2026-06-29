@@ -92,8 +92,8 @@ The script automatically selects the fastest available backend (Apple MPS or CUD
 ├── 09_figures_final.py          # figures 1, 2, 4, 5
 ├── 10_style_robustness.py       # function-word robustness (H1b) + figure 3
 ├── 11_mrqap_activity.py         # MRQAP activity control
-├── data/                        # created on first run (JSONL comments; git-ignored)
-├── results/                     # created on first run (JSON/NPY/PKL; git-ignored)
+├── data/                        # created on first run (JSONL comments)
+├── results/                     # created on first run (JSON/NPY/PKL)
 └── figures/                     # generated PDF figures
 ```
 
