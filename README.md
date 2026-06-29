@@ -7,7 +7,7 @@
 
 ## Overview
 
-This repository contains all code used to collect, process, and analyse Reddit comment data from r/apple, r/google, and r/samsung (January–June 2024). The study investigates whether users who interact within tech brand communities on Reddit exhibit greater linguistic similarity than non-interacting users (linguistic homophily), and whether community structure detected via network analysis corresponds to attitudinal differences toward the brand.
+This repository contains all code used to collect, process, and analyse Reddit comment data from r/apple, r/google, and r/samsung (January–June 2024). The study asks what is actually measured when interacting users appear linguistically similar: genuine stylistic affinity, as Communication Accommodation Theory predicts, or shared topic and posting volume. It decomposes linguistic similarity into a content component (TF-IDF) and a topic-independent stylistic component (function words). Each is tested against the reply network with a QAP, and an MRQAP then controls for activity volume. The three brand communities are compared, and their internal community structure is checked against attitudinal differences toward the brand.
 
 ---
 
@@ -56,12 +56,12 @@ This executes the following steps in order:
 | 2 | `02_build_network.py` | Build user reply networks; extract the giant connected component | `results/{subreddit}_network.pkl`, `results/network_stats.json` |
 | 3 | `03_tfidf_similarity.py` | TF-IDF user vectors; pairwise cosine similarity matrices | `results/{subreddit}_similarity_matrix.npy`, `results/{subreddit}_users.json` |
 | 4 | `04_qap_test.py` | QAP permutation test for linguistic homophily (1,000 permutations) | `results/qap_results.json`, `results/{subreddit}_qap_null.npy` |
-| 5 | `10_style_robustness.py` | Robustness test (H1b): function-word (style) similarity + QAP | `results/style_qap_results.json`, `figures/fig5_style_robustness.pdf` |
+| 5 | `10_style_robustness.py` | Robustness test (H1b): function-word (style) similarity + QAP (paper Figure 3) | `results/style_qap_results.json`, `figures/fig3_style_robustness.pdf` |
 | 6 | `11_mrqap_activity.py` | MRQAP controlling for activity volume (Dekker DSP) | `results/mrqap_results.json` |
 | 7 | `05_community_detection.py` | Louvain community detection (10 runs); ARI/NMI stability | `results/{subreddit}_communities.json` |
 | 8 | `06_lda_topics.py` | LDA topic modelling per community (5 topics each) | `results/{subreddit}_lda_topics.json` |
 | 9 | `07_sentiment_analysis.py` | Sentiment classification (`cardiffnlp/twitter-roberta-base-sentiment`); chi-square test | `results/{subreddit}_sentiment.json` |
-| 10 | `09_figures_final.py` | Generate the paper figures 1–4 | `figures/fig1_networks.pdf` ... `figures/fig4_sentiment.pdf` |
+| 10 | `09_figures_final.py` | Generate paper figures 1, 2, 4, 5 (networks, QAP nulls, cross-brand, sentiment) | `figures/fig1_networks.pdf`, `figures/fig2_qap.pdf`, `figures/fig4_crossbrand.pdf`, `figures/fig5_sentiment.pdf` |
 
 The figure scripts (`09`, `10`) save each figure as PDF in the `figures/` directory.
 
@@ -89,8 +89,8 @@ The script automatically selects the fastest available backend (Apple MPS or CUD
 ├── 05_community_detection.py
 ├── 06_lda_topics.py
 ├── 07_sentiment_analysis.py
-├── 09_figures_final.py          # figures 1-4
-├── 10_style_robustness.py       # function-word robustness (H1b) + figure 5
+├── 09_figures_final.py          # figures 1, 2, 4, 5
+├── 10_style_robustness.py       # function-word robustness (H1b) + figure 3
 ├── 11_mrqap_activity.py         # MRQAP activity control
 ├── data/                        # created on first run (JSONL comments; git-ignored)
 ├── results/                     # created on first run (JSON/NPY/PKL; git-ignored)

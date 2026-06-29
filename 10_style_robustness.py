@@ -1,7 +1,7 @@
 """
 Robustness check for H1b. Repeats the QAP using a topic-independent
 function-word similarity matrix instead of TF-IDF, to separate stylistic from
-topical homophily. Saves results/style_qap_results.json and Figure 5.
+topical homophily. Saves results/style_qap_results.json and Figure 3.
 """
 
 import json
@@ -158,7 +158,7 @@ def qap(sim, adj, n_perms=N_PERMS, seed=RNG_SEED):
 
 
 def make_figure(style_results: dict):
-    """Figure 5: content (TF-IDF) vs. style (function-word) QAP homophily."""
+    """Figure 3: content (TF-IDF) vs. style (function-word) QAP homophily."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -189,9 +189,9 @@ def make_figure(style_results: dict):
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     plt.tight_layout()
-    plt.savefig(os.path.join(fig_dir, "fig5_style_robustness.pdf"))
+    plt.savefig(os.path.join(fig_dir, "fig3_style_robustness.pdf"))
     plt.close(fig)
-    print("Saved -> figures/fig5_style_robustness.pdf")
+    print("Saved -> figures/fig3_style_robustness.pdf")
 
 
 if __name__ == "__main__":

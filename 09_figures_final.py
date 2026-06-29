@@ -179,9 +179,9 @@ def fig2_qap() -> None:
     plt.close()
 
 
-# Figure 3 - Cross-brand comparison
-def fig3_crossbrand() -> None:
-    print("\n[Figure 3] Cross-brand comparison...")
+# Figure 4 - Cross-brand comparison
+def fig4_crossbrand() -> None:
+    print("\n[Figure 4] Cross-brand comparison...")
 
     with open(os.path.join(RESULTS_DIR, "qap_results.json")) as fh:
         qap = json.load(fh)
@@ -258,18 +258,18 @@ def fig3_crossbrand() -> None:
                      ha="center", va="bottom", fontsize=8.5)
 
     fig.suptitle(
-        "Figure 3. Cross-Brand Comparison of Linguistic Homophily, "
+        "Figure 4. Cross-Brand Comparison of Linguistic Homophily, "
         "Community Structure, and Sentiment Heterogeneity",
         fontsize=10.5, y=1.02, fontweight="normal"
     )
     fig.tight_layout()
-    save_fig(fig, "fig3_crossbrand")
+    save_fig(fig, "fig4_crossbrand")
     plt.close()
 
 
-# Figure 4 - Sentiment distribution by community (3-panel, top 12 + Other)
-def fig4_sentiment(top_n: int = 12) -> None:
-    print("\n[Figure 4] Sentiment distributions...")
+# Figure 5 - Sentiment distribution by community (3-panel, top 12 + Other)
+def fig5_sentiment(top_n: int = 12) -> None:
+    print("\n[Figure 5] Sentiment distributions...")
 
     fig, axes = plt.subplots(1, 3, figsize=(14, 5.5), sharey=False)
 
@@ -348,7 +348,7 @@ def fig4_sentiment(top_n: int = 12) -> None:
         )
 
     fig.suptitle(
-        "Figure 4. Sentiment Distribution by Louvain Community\n"
+        "Figure 5. Sentiment Distribution by Louvain Community\n"
         "(top 12 communities by size; remaining communities aggregated as 'Other')",
         fontsize=10.5, y=1.02, fontweight="normal"
     )
@@ -364,13 +364,13 @@ def fig4_sentiment(top_n: int = 12) -> None:
                fontsize=9, handlelength=1.2, handleheight=0.9)
 
     fig.tight_layout()
-    save_fig(fig, "fig4_sentiment")
+    save_fig(fig, "fig5_sentiment")
     plt.close()
 
 
 if __name__ == "__main__":
     fig1_networks()
     fig2_qap()
-    fig3_crossbrand()
-    fig4_sentiment()
+    fig4_crossbrand()
+    fig5_sentiment()
     print("\nAll figures saved to figures/")
